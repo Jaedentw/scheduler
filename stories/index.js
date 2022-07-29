@@ -92,14 +92,12 @@ storiesOf("InterviewerListItem", module)
 })
 .add("Unselected", () => (
   <InterviewerListItem
-    id={interviewer.id}
     name={interviewer.name}
     avatar={interviewer.avatar}
   />
 ))
 .add("Selected", () => (
   <InterviewerListItem
-    id={interviewer.id}
     name={interviewer.name}
     avatar={interviewer.avatar}
     selected
@@ -107,7 +105,6 @@ storiesOf("InterviewerListItem", module)
 ))
 .add("Clickable", () => (
   <InterviewerListItem
-    id={interviewer.id}
     name={interviewer.name}
     avatar={interviewer.avatar}
     setInterviewer={() => action("setInterviewer")(interviewer.id)}
@@ -167,11 +164,20 @@ storiesOf("Appointment", module)
   message="Could not delete appointment. Please try again later."
   onClose={action("onClose")}
 />)
-.add("Form", () => <Form
-time=""
+.add("Form-create", () => <Form
+  interviewers={interviewers}
+  onSave={action("onSave")}
+  onCancel={action("onCancel")}
+/>)
+.add("form-edit", () => <Form 
+  student="Jaeden"
+  interviewer={2}
+  interviewers={interviewers}
+  onSave={action("onSave")}
+  onCancel={action("onCancel")}
 />)
 .add("Header", () => <Header
-time=""
+  time="12am"
 />)
 .add("Show", () => <Show 
   student="Lydia Miller-Jones"
