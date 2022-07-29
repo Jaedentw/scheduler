@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import { storiesOf } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import "index.scss";
@@ -188,3 +188,20 @@ storiesOf("Appointment", module)
 .add("Status", () => <Status
   message="Deleting"
 />)
+.add("Appointment Empty", () => (
+  <Fragment>
+    <Appointment id={1} time="4pm" />
+    <Appointment time="5pm" />
+  </Fragment>
+))
+.add("Appointment Booked", () => (
+  <Fragment>
+    <Appointment
+      id={1}
+      time="4pm"
+      interview={{ student: "Lydia Miller-Jones", interviewer }}
+    />
+    <Appointment time="5pm" />
+  </Fragment>
+))
+

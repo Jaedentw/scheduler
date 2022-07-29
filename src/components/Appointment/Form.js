@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import { ConferenceList } from "twilio/lib/rest/insights/v1/conference";
 import Button from "../Button"
 import InterviewerList from "../InterviewerList";
 
