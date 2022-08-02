@@ -49,7 +49,7 @@ export default function Appointment (props) {
             back()
             console.log("Previous Mode", mode)
           }}
-          interviewers={['placeholder']}
+          interviewers={props.interviewers}
         />
       }
     </article>
