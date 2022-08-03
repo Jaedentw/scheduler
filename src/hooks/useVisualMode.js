@@ -10,14 +10,14 @@ export default function useVisualMode(initial) {
       history[history.length - 1] = newMode;
       setMode(newMode);
     } else {
-      history.push(newMode)
+      setHistory((prev) => [...prev, newMode])
       setMode(newMode);
     }
   }
 
   function back() {
     if(history.length > 1) {
-      history.pop()
+      setHistory((prev) => [...prev.slice(0, -1)])
       setMode(history[history.length-1]);
     } 
   }

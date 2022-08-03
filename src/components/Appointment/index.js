@@ -13,16 +13,26 @@ const STATUS = "STATUS";
 
 export default function Appointment (props) {
 
-  let student = ''
-  let interviewer = {};
-  if(props.interview) {
-    interviewer = props.interview.interviewer;
-    student = props.interview.student
-  }
+  // let student = ''
+  // let interviewer = {};
+
+  // if(props.interview) {
+  //   interviewer = props.interview.interviewer;
+  //   student = props.interview.student
+  // }
 
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
+
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
+    };
+    props.bookInterview(props.id, interview);
+    transition(SHOW);
+  }
 
   return (
     <article className="appointment">
@@ -38,9 +48,10 @@ export default function Appointment (props) {
         />
       }
       {mode === SHOW && 
+      props.interview &&
         <Show
-          student={student}
-          interviewer={interviewer}
+          student={props.interview.student}
+          interviewer={props.interview.interviewer}
         />
       }
       {mode === CREATE && 
@@ -50,6 +61,7 @@ export default function Appointment (props) {
             console.log("Previous Mode", mode)
           }}
           interviewers={props.interviewers}
+          onSave={save}
         />
       }
     </article>
