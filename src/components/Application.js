@@ -8,7 +8,7 @@ import {getAppointmentsForDay, getInterview, getInterviewersForDay} from "../hel
 
 export default function Application(props) {
 
-  const [state, setState] = useState({
+  let [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {}
