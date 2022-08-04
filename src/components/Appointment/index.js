@@ -45,10 +45,15 @@ export default function Appointment (props) {
   }
 
   function deleteInterview() {
-    transition(DELETING);
-    setTimeout((() => props.cancelInterview(props.id)
-    .then(transition(EMPTY))
-    .catch(error => transition(ERROR_DELETE, true))), 1000) //setTimeout implemented to allow enough time for DELETING mode to show
+    transition(DELETING, true);
+    setTimeout((() => 
+    props.cancelInterview(props.id)
+    .then(() => {
+      transition(EMPTY)
+      console.log('ACTIVATED')
+    })
+    .catch(error => transition(ERROR_DELETE, true))
+    ), 1000) //setTimeout implemented to allow enough time for DELETING mode to show
   }
 
   return (
@@ -87,6 +92,7 @@ export default function Appointment (props) {
       {mode === ERROR_SAVE &&
         <Error 
         message="Could not save appointment. Please try again later."
+        onClose={() => back()}
         />
       }
       {mode === DELETING &&
@@ -97,6 +103,8 @@ export default function Appointment (props) {
       {mode === ERROR_DELETE &&
         <Error
           message="Could not delete appointment. Please try again later."
+          
+          onClose={() => back()}
         />
       }
       {mode === CONFIRM &&
