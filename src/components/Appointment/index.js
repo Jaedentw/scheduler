@@ -15,8 +15,9 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 const ERROR_SAVE = "ERROR_SAVE";
 const DELETING = "DELETING";
-const ERROR_DELETE = "ERROR_DELETE"
+const ERROR_DELETE = "ERROR_DELETE";
 const CONFIRM = "CONFIRM";
+const EDIT = "EDIT";
 
 export default function Appointment (props) {
 
@@ -45,7 +46,6 @@ export default function Appointment (props) {
 
   function deleteInterview() {
     transition(DELETING);
-
     setTimeout((() => props.cancelInterview(props.id)
     .then(transition(EMPTY))
     .catch(error => transition(ERROR_DELETE, true))), 1000) //setTimeout implemented to allow enough time for DELETING mode to show
@@ -69,14 +69,12 @@ export default function Appointment (props) {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={() => {transition(CONFIRM)}}
-          onEdit={() => {}}
+          onEdit={() => {transition(EDIT)}}
         />
       }
       {mode === CREATE && 
         <Form
-          onCancel={() => {
-            back()
-          }}
+          onCancel={() => back()}
           interviewers={props.interviewers}
           onSave={save}
         />
@@ -105,6 +103,15 @@ export default function Appointment (props) {
         <Confirm
           onCancel={() => back()}
           onConfirm={deleteInterview} 
+        />
+      }
+      {mode === EDIT &&
+        <Form 
+        student={props.interview.student}
+        interviewer={props.interview.interviewer.id}
+        onSave={save}
+        onCancel={() => back()}
+        interviewers={props.interviewers}
         />
       }
     </article>
