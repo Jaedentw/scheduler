@@ -43,6 +43,14 @@ export default function Appointment (props) {
       .catch(error => transition(ERROR_SAVE, true));
   }
 
+  function deleteInterview() {
+    transition(DELETING);
+
+    setTimeout((() => props.cancelInterview(props.id)
+    .then(transition(EMPTY))
+    .catch(error => transition(ERROR_DELETE, true))), 1000) //setTimeout implemented to allow enough time for DELETING mode to show
+  }
+
   return (
     <article className="appointment">
       <Header
@@ -52,7 +60,6 @@ export default function Appointment (props) {
         <Empty 
         onAdd={() => {
           transition(CREATE);
-          console.log("Previous Mode", mode)
         }} 
         />
       }
@@ -61,13 +68,14 @@ export default function Appointment (props) {
         <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={() => {transition(CONFIRM)}}
+          onEdit={() => {}}
         />
       }
       {mode === CREATE && 
         <Form
           onCancel={() => {
             back()
-            console.log("Previous Mode", mode)
           }}
           interviewers={props.interviewers}
           onSave={save}
@@ -95,7 +103,8 @@ export default function Appointment (props) {
       }
       {mode === CONFIRM &&
         <Confirm
-          onCancel={() => {}}
+          onCancel={() => back()}
+          onConfirm={deleteInterview} 
         />
       }
     </article>

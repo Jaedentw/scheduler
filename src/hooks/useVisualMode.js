@@ -6,6 +6,7 @@ export default function useVisualMode(initial) {
   let [history, setHistory] = useState([initial]);
 
   function transition(newMode, replace = false) {
+    console.log(mode, newMode)
     if(replace) {
       setHistory((prev) => {
         const prev1 = [...prev].slice(0, prev.length - 1)
