@@ -34,17 +34,6 @@ export default function useApplicationData() {
         dayIndex = state.days.indexOf(day);
       }
     }
-  
-    let interviewIds = dayData.appointments;
-    let counter = 0;
-
-    for (let appt in state.appointments) {
-      for (let id of interviewIds) {
-        if (appt === id && state.appointments[id].interview) {
-          counter += 1;
-        }
-      }
-    }
 
     if(take) {
       dayData.spots = dayData.spots - 1
