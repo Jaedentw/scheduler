@@ -1,20 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Button from "../Button"
 import InterviewerList from "../InterviewerList";
 
 
-export default function Form (props) {
+export default function Form(props) {
 
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
-  const reset = function() {
+  const reset = function () {
     setInterviewer(null);
-    setStudent("")
+    setStudent("");
+    setError("");
   }
 
-  const cancel = function() {
+  const cancel = function () {
     reset();
     props.onCancel();
   }
@@ -28,14 +29,14 @@ export default function Form (props) {
       setError("Please select an interviewer");
       return;
     }
-  
+    setError("");
     props.onSave(student, interviewer);
   }
 
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form 
+        <form
           autoComplete="off"
           onSubmit={event => event.preventDefault()}
         >
@@ -50,7 +51,7 @@ export default function Form (props) {
           />
         </form>
         <section className="appointment__validation">{error}</section>
-        <InterviewerList 
+        <InterviewerList
           interviewers={props.interviewers}
           value={interviewer}
           onChange={setInterviewer}
@@ -61,7 +62,7 @@ export default function Form (props) {
           <Button danger onClick={cancel}>Cancel</Button>
           <Button confirm onClick={() => {
             validate();
-            }}>Save</Button>
+          }}>Save</Button>
         </section>
       </section>
     </main>
