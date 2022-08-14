@@ -1,5 +1,5 @@
 import React from "react";
-import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, queryByAltText, getByPlaceholderText, queryByText, getByAltText, getByTestId, prettyDOM} from "@testing-library/react";
+import { render, cleanup, waitForElement, fireEvent, getByText, getAllByTestId, queryByAltText, getByPlaceholderText, queryByText, getByAltText, getByTestId } from "@testing-library/react";
 import Application from "components/Application";
 import axios from "axios"
 
@@ -98,14 +98,6 @@ describe("Application", () => {
 
     expect(getByText(appointment, "Lydia Miller-Jones"));
   });
-
-
-
-
-
-
-
-
 
   it("shows the save error when failing to save an appointment", async () => {
     const { container } = render(<Application />);
