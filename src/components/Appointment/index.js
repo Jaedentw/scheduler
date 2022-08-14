@@ -42,10 +42,9 @@ export default function Appointment(props) {
       props.cancelInterview(props.id)
         .then(() => {
           transition(EMPTY)
-          console.log('ACTIVATED')
         })
         .catch(error => transition(ERROR_DELETE, true))
-    ), 1000) //setTimeout implemented to allow enough time for DELETING mode to show
+    ), 1) //setTimeout implemented to allow enough time for DELETING mode to show
   }
 
   return (
