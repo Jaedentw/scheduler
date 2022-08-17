@@ -3,6 +3,8 @@
 ## Setup
 
 Install dependencies with `npm install`.
+Fork and clone https://github.com/Jaedentw/scheduler-api
+
 
 ## Running Webpack Development Server
 

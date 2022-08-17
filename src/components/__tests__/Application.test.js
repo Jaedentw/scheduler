@@ -49,7 +49,7 @@ describe("Application", () => {
     const { container } = render(<Application />);
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
-    
+
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );
@@ -130,7 +130,7 @@ describe("Application", () => {
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
     axios.delete.mockRejectedValue();
-    
+
     const appointment = getAllByTestId(container, "appointment").find(
       appointment => queryByText(appointment, "Archie Cohen")
     );

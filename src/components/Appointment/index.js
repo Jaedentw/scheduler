@@ -48,7 +48,7 @@ export default function Appointment(props) {
   }
 
   return (
-    <article 
+    <article
       className="appointment"
       data-testid="appointment"
     >
