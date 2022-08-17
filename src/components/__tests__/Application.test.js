@@ -104,7 +104,7 @@ describe("Application", () => {
 
     await waitForElement(() => getByText(container, "Archie Cohen"));
 
-    axios.put.mockRejectedValue();
+    axios.put.mockRejectedValueOnce();
 
     const appointment = getAllByTestId(container, "appointment")[0];
 
