@@ -11,13 +11,13 @@ Install dependencies with `npm install`.
 Fork and clone [this repository](https://github.com/Jaedentw/scheduler-api) and follow the instructions in the README.md to get a sample data server set up.
 
 ## Screenshots
-  Inital page
+  *Inital page
   ![Default main page](https://github.com/Jaedentw/scheduler/blob/master/docs/Default.png)
 
-  Creating a new appointment
+  *Creating a new appointment
   ![Form to add new appointment](https://github.com/Jaedentw/scheduler/blob/master/docs/Form.png)
 
-  Confirm delete and Error message
+  *Confirm delete and Error message
   ![Error page and confirm delete](https://github.com/Jaedentw/scheduler/blob/master/docs/Error.png)
 
 ## Running Webpack Development Server
