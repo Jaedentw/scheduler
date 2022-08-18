@@ -1,10 +1,15 @@
 # Interview Scheduler
 
+
 ## Setup
 
 Install dependencies with `npm install`.
-Fork and clone https://github.com/Jaedentw/scheduler-api
 
+Fork and clone [this repository](https://github.com/Jaedentw/scheduler-api) and follow the instructions in the README.md to get a sample data server set up.
+
+## Screenshots
+  [Default main page]
+  []
 
 ## Running Webpack Development Server
 
